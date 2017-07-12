@@ -1,0 +1,43 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ATM.o Balance.o Card.o Server.o test.o user.o
+LINKOBJ  = ATM.o Balance.o Card.o Server.o test.o user.o
+LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) -m32 -std=c++11
+CFLAGS   = $(INCS) -m32 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ATM.o: ATM.cpp
+	$(CPP) -c ATM.cpp -o ATM.o $(CXXFLAGS)
+
+Balance.o: Balance.cpp
+	$(CPP) -c Balance.cpp -o Balance.o $(CXXFLAGS)
+
+Card.o: Card.cpp
+	$(CPP) -c Card.cpp -o Card.o $(CXXFLAGS)
+
+Server.o: Server.cpp
+	$(CPP) -c Server.cpp -o Server.o $(CXXFLAGS)
+
+test.o: test.cpp
+	$(CPP) -c test.cpp -o test.o $(CXXFLAGS)
+
+user.o: user.cpp
+	$(CPP) -c user.cpp -o user.o $(CXXFLAGS)
